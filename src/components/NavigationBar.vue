@@ -13,9 +13,9 @@
       <!-- Sync/Publish -->
       <div class="flex flex--row" :class="{'navigation-bar__hidden': styles.hideLocations}">
         <a class="navigation-bar__button navigation-bar__button--location button" :class="{'navigation-bar__button--blink': location.id === currentLocation.id}" v-for="location in syncLocations" :key="location.id" :href="location.url" target="_blank" v-title="'Synchronized location'"><icon-provider :provider-id="location.providerId"></icon-provider></a>
-        <button class="navigation-bar__button navigation-bar__button--sync button" :disabled="!isSyncPossible || isSyncRequested || offline" @click="requestSync" v-title="'Synchronize now'"><icon-sync></icon-sync></button>
+        <button class="navigation-bar__button navigation-bar__button--sync button" :disabled="!isSyncPossible || isSyncRequested || offline" @click="requestSync" v-title="'立即同步'"><icon-sync></icon-sync></button>
         <a class="navigation-bar__button navigation-bar__button--location button" :class="{'navigation-bar__button--blink': location.id === currentLocation.id}" v-for="location in publishLocations" :key="location.id" :href="location.url" target="_blank" v-title="'Publish location'"><icon-provider :provider-id="location.providerId"></icon-provider></a>
-        <button class="navigation-bar__button navigation-bar__button--publish button" :disabled="!publishLocations.length || isPublishRequested || offline" @click="requestPublish" v-title="'Publish now'"><icon-upload></icon-upload></button>
+        <button class="navigation-bar__button navigation-bar__button--publish button" :disabled="!publishLocations.length || isPublishRequested || offline" @click="requestPublish" v-title="'立即发布'"><icon-upload></icon-upload></button>
       </div>
       <!-- Revision -->
       <div class="flex flex--row" v-if="revisionContent">
@@ -24,8 +24,8 @@
       </div>
     </div>
     <div class="navigation-bar__inner navigation-bar__inner--edit-pagedownButtons">
-      <button class="navigation-bar__button button" @click="undo" v-title="'Undo'" :disabled="!canUndo"><icon-undo></icon-undo></button>
-      <button class="navigation-bar__button button" @click="redo" v-title="'Redo'" :disabled="!canRedo"><icon-redo></icon-redo></button>
+      <button class="navigation-bar__button button" @click="undo" v-title="'撤销'" :disabled="!canUndo"><icon-undo></icon-undo></button>
+      <button class="navigation-bar__button button" @click="redo" v-title="'恢复'" :disabled="!canRedo"><icon-redo></icon-redo></button>
       <div v-for="button in pagedownButtons" :key="button.method">
         <button class="navigation-bar__button button" v-if="button.method" @click="pagedownClick(button.method)" v-title="button.titleWithShortcut">
           <component :is="button.iconClass"></component>
@@ -48,7 +48,7 @@ import pagedownButtons from '../data/pagedownButtons';
 import store from '../store';
 
 // According to mousetrap
-const mod = /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? 'Meta' : 'Ctrl';
+const mod = /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? 'Command⌘' : 'Ctrl';
 
 const getShortcut = (method) => {
   let result = '';

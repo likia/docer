@@ -3,17 +3,17 @@
     <div class="stat-panel__block stat-panel__block--left" v-if="styles.showEditor">
       <span class="stat-panel__block-name">
         Markdown
-        <span v-if="textSelection">selection</span>
+        <span v-if="textSelection">选中</span>
       </span>
       <span v-for="stat in textStats" :key="stat.id">
         <span class="stat-panel__value">{{stat.value}}</span> {{stat.name}}
       </span>
-      <span class="stat-panel__value">Ln {{line}}, Col {{column}}</span>
+      <span class="stat-panel__value">行 {{line}}, 列 {{column}}</span>
     </div>
     <div class="stat-panel__block stat-panel__block--right">
       <span class="stat-panel__block-name">
         HTML
-        <span v-if="htmlSelection">selection</span>
+        <span v-if="htmlSelection">选中</span>
       </span>
       <span v-for="stat in htmlStats" :key="stat.id">
         <span class="stat-panel__value">{{stat.value}}</span> {{stat.name}}
@@ -43,14 +43,14 @@ export default {
     line: 0,
     column: 0,
     textStats: [
-      new Stat('bytes', '[\\s\\S]'),
-      new Stat('words', '\\S+'),
-      new Stat('lines', '\n'),
+      new Stat('字节', '[\\s\\S]'),
+      new Stat('词', '\\S+'),
+      new Stat('行', '\n'),
     ],
     htmlStats: [
-      new Stat('characters', '\\S'),
-      new Stat('words', '\\S+'),
-      new Stat('paragraphs', '\\S.*'),
+      new Stat('字', '\\S'),
+      new Stat('词', '\\S+'),
+      new Stat('段', '\\S.*'),
     ],
   }),
   computed: mapGetters('layout', [

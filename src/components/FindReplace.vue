@@ -1,6 +1,6 @@
 <template>
   <div class="find-replace" @keydown.esc="onEscape">
-    <button class="find-replace__close-button button not-tabbable" @click="close()" v-title="'Close'">
+    <button class="find-replace__close-button button not-tabbable" @click="close()" v-title="'关闭'">
       <icon-close></icon-close>
     </button>
     <div class="find-replace__row">
@@ -14,8 +14,8 @@
           <button class="find-replace__button find-replace__button--find-option button" :class="{'find-replace__button--on': findUseRegexp}" @click="findUseRegexp = !findUseRegexp" title="Regular expression">.<sup>⁕</sup></button>
         </div>
         <div class="flex flex--row">
-          <button class="find-replace__button button" @click="find('backward')">Previous</button>
-          <button class="find-replace__button button" @click="find('forward')">Next</button>
+          <button class="find-replace__button button" @click="find('backward')">上一个</button>
+          <button class="find-replace__button button" @click="find('forward')">下一个</button>
         </div>
       </div>
     </div>
@@ -24,8 +24,8 @@
         <input type="text" class="find-replace__text-input find-replace__text-input--replace text-input" @keydown.enter="replace" v-model="replaceText">
       </div>
       <div class="find-replace__row flex flex--row flex--end">
-        <button class="find-replace__button button" @click="replace">Replace</button>
-        <button class="find-replace__button button" @click="replaceAll">All</button>
+        <button class="find-replace__button button" @click="replace">替换</button>
+        <button class="find-replace__button button" @click="replaceAll">全部替换</button>
       </div>
     </div>
   </div>

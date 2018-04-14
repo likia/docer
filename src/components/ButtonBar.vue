@@ -1,24 +1,24 @@
 <template>
   <div class="button-bar">
     <div class="button-bar__inner button-bar__inner--top">
-      <button class="button-bar__button button" :class="{ 'button-bar__button--on': layoutSettings.showNavigationBar }" v-if="!light" @click="toggleNavigationBar()" v-title="'Toggle navigation bar'">
+      <button class="button-bar__button button" :class="{ 'button-bar__button--on': layoutSettings.showNavigationBar }" v-if="!light" @click="toggleNavigationBar()" v-title="'显示/隐藏导航栏'">
         <icon-navigation-bar></icon-navigation-bar>
       </button>
-      <button class="button-bar__button button" :class="{ 'button-bar__button--on': layoutSettings.showSidePreview }" tour-step-anchor="editor" @click="toggleSidePreview()" v-title="'Toggle side preview'">
+      <button class="button-bar__button button" :class="{ 'button-bar__button--on': layoutSettings.showSidePreview }" tour-step-anchor="editor" @click="toggleSidePreview()" v-title="'显示/隐藏预览'">
         <icon-side-preview></icon-side-preview>
       </button>
-      <button class="button-bar__button button" @click="toggleEditor(false)" v-title="'Reader mode'">
+      <button class="button-bar__button button" @click="toggleEditor(false)" v-title="'预览模式'">
         <icon-eye></icon-eye>
       </button>
     </div>
     <div class="button-bar__inner button-bar__inner--bottom">
-      <button class="button-bar__button button" :class="{ 'button-bar__button--on': layoutSettings.focusMode }" @click="toggleFocusMode()" v-title="'Toggle focus mode'">
+      <button class="button-bar__button button" :class="{ 'button-bar__button--on': layoutSettings.focusMode }" @click="toggleFocusMode()" v-title="'开启/关闭专注模式(输入时始终保持光标垂直居中的位置)'">
         <icon-target></icon-target>
       </button>
-      <button class="button-bar__button button" :class="{ 'button-bar__button--on': layoutSettings.scrollSync }" @click="toggleScrollSync()" v-title="'Toggle scroll sync'">
+      <button class="button-bar__button button" :class="{ 'button-bar__button--on': layoutSettings.scrollSync }" @click="toggleScrollSync()" v-title="'开启/关闭滚动同步'">
         <icon-scroll-sync></icon-scroll-sync>
       </button>
-      <button class="button-bar__button button" :class="{ 'button-bar__button--on': layoutSettings.showStatusBar }" @click="toggleStatusBar()" v-title="'Toggle status bar'">
+      <button class="button-bar__button button" :class="{ 'button-bar__button--on': layoutSettings.showStatusBar }" @click="toggleStatusBar()" v-title="'显示/隐藏状态栏'">
         <icon-status-bar></icon-status-bar>
       </button>
     </div>
