@@ -49,7 +49,10 @@ import History from './History';
 import Database from './Database';
 import Magnify from './Magnify';
 import FormatListChecks from './FormatListChecks';
+import Template from './Template';
 
+
+Vue.component('iconTemplate', Template);
 Vue.component('iconProvider', Provider);
 Vue.component('iconFormatBold', FormatBold);
 Vue.component('iconFormatItalic', FormatItalic);

@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import 'babel-polyfill';
+import Axios from 'axios';
 import 'indexeddbshim/dist/indexeddbshim';
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 import './extensions/';
@@ -36,6 +37,10 @@ if (localStorage.updated) {
   store.dispatch('notification/info', 'StackEdit has just updated itself!');
   setTimeout(() => localStorage.removeItem('updated'), 2000);
 }
+
+Vue.prototype.$http = Axios.create({
+  baseURL: 'http://docer.com/',
+});
 
 Vue.config.productionTip = false;
 

@@ -125,6 +125,7 @@ function Pagedown(options) {
    * image url (or null if the user cancelled). If this hook returns false, the default dialog will be used.
    */
   hooks.addFalse("insertLinkDialog");
+  hooks.addFalse('insertTemplateDialog');
 
   var that = this,
     input;
@@ -468,6 +469,9 @@ function UIManager(input, commandManager) {
     });
     buttons.quote = bindCommand("doBlockquote");
     buttons.code = bindCommand("doCode");
+    buttons.template = bindCommand(function(chunk, postProc) {
+      return this.doTemplate(chunk, postProc)
+    });
     buttons.image = bindCommand(function (chunk, postProcessing) {
       return this.doLinkOrImage(chunk, postProcessing, true);
     });
@@ -706,6 +710,19 @@ function properlyEncoded(linkdef) {
     return title ? link + ' "' + title + '"' : link;
   });
 }
+
+/**
+ * 插入模板
+ * @param chunk
+ * @param postProcessing
+ */
+commandProto.doTemplate = function (chunk, postProcessing) {
+
+
+  this.hooks.insertTemplateDialog((tpl) => {
+    chunk.selection = tpl
+  })
+};
 
 commandProto.doLinkOrImage = function (chunk, postProcessing, isImage) {
 
@@ -1003,7 +1020,8 @@ commandProto.doCode = function (chunk) {
     chunk.skipLines(nLinesBack, nLinesForward);
 
     if (!chunk.selection) {
-      chunk.startTag = "    ";
+      chunk.startTag = "```";
+      chunk.endTag = '```';
       chunk.selection = this.getString("codeexample");
     } else {
       if (/^[ ]{0,3}\S/m.test(chunk.selection)) {

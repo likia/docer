@@ -375,7 +375,14 @@ const editorSvc = Object.assign(new Vue(), editorSvcDiscussions, editorSvcUtils,
       });
       return true;
     });
-
+    this.pagedownEditor.hooks.set('insertTemplateDialog', (callback) => {
+      store.dispatch('modal/open', {
+        type: 'template',
+        callback,
+      });
+      return true;
+    });
+    console.log(this.pagedownEditor.hooks);
     this.editorElt.parentNode.addEventListener('scroll', () => this.saveContentState(true));
     this.previewElt.parentNode.addEventListener('scroll', () => this.saveContentState(true));
 

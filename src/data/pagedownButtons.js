@@ -46,4 +46,8 @@ export default [{}, {
   method: 'image',
   title: '图片',
   icon: 'file-image',
+}, {
+  method: 'template',
+  title: '插入模板',
+  icon: 'template',
 }];

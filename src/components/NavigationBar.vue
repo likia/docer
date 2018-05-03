@@ -3,8 +3,8 @@
     <div class="navigation-bar__inner navigation-bar__inner--right navigation-bar__inner--title flex flex--row">
       <!-- Spinner -->
       <div class="navigation-bar__spinner">
-        <div v-if="!offline && showSpinner" class="spinner"></div>
-        <icon-sync-off v-if="offline"></icon-sync-off>
+        <!--<div v-if="!offline && showSpinner" class="spinner"></div>-->
+        <!--<icon-sync-off v-if="offline"></icon-sync-off>-->
       </div>
       <!-- Title -->
       <div class="navigation-bar__title navigation-bar__title--fake text-input"></div>

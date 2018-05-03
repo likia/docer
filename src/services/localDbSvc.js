@@ -439,7 +439,7 @@ const localDbSvc = {
               } else {
                 // If still no ID, create a new file
                 store.dispatch('createFile', {
-                  name: 'Welcome file',
+                  name: '新建文件',
                   text: welcomeFile,
                 })
                   // Set it as the current file

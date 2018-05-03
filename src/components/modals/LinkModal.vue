@@ -1,14 +1,14 @@
 <template>
   <modal-inner aria-label="Insert link">
     <div class="modal__content">
-      <p>Please provide a <b>URL</b> for your link.</p>
-      <form-entry label="URL" error="url">
+      <p>请输入链接的<b>URL</b></p>
+      <form-entry label="链接" error="链接">
         <input slot="field" class="textfield" type="text" v-model.trim="url" @keydown.enter="resolve()">
       </form-entry>
     </div>
     <div class="modal__button-bar">
-      <button class="button" @click="reject()">Cancel</button>
-      <button class="button" @click="resolve()">Ok</button>
+      <button class="button" @click="reject()">取消</button>
+      <button class="button" @click="resolve()">确定</button>
     </div>
   </modal-inner>
 </template>
